@@ -62,7 +62,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private TextView sportText;
 
-   private ImageView bingPicImg;
+    private ImageView bingPicImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class WeatherActivity extends AppCompatActivity {
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         if (Build.VERSION.SDK_INT >= 21){
             View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_FULLSCREEN);
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_weather);
@@ -99,9 +99,15 @@ public class WeatherActivity extends AppCompatActivity {
         }
         else {
             //无法缓存时去服务器查询天气
-            weatherId = getIntent().getStringExtra("weather_id");
+           weatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);
             requestWeather(weatherId);
+        }
+        String bingPic = prefs.getString("bing_pic",null);
+        if (bingPic != null){
+            Glide.with(this).load(bingPic).into(bingPicImg);
+        }else{
+            loadBingPic();
         }
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -109,12 +115,7 @@ public class WeatherActivity extends AppCompatActivity {
                 requestWeather(weatherId);
             }
         });
-        String bingPic = prefs.getString("bing_pic",null);
-        if (bingPic != null){
-            Glide.with(this).load(bingPicImg).into(bingPicImg);
-        }else{
-            loadBingPic();
-        }
+
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         navButton = (Button)findViewById(R.id.nav_button);
         navButton.setOnClickListener(new View.OnClickListener() {

@@ -36,16 +36,15 @@
                     <include layout="@layout/now"/>
                     <include layout="@layout/forecast"/>
                     <include layout="@layout/aqi"/>
-
                     <include layout="@layout/suggestion" />
 
                 </LinearLayout>
 
             </ScrollView>
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+      </android.support.v4.widget.SwipeRefreshLayout>
 
-        <fragment
+          <fragment
             android:id="@+id/choose_area_fragment"
             android:name="com.example.a61685.coolweather.ChooseAreaFragment"
             android:layout_width="match_parent"
