@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<litepal>
+
+    <dbname value="cool_weather"/>
+
+    <Version value="1"/>
+
+    <list>
+
+        <mapping class="com.example.a61685.coolweather.db.Count"/>
+        <mapping class="com.example.a61685.coolweather.db.City"/>
+        <mapping class="com.example.a61685.coolweather.db.Province"/>
+    </list>
+
+</litepal>
